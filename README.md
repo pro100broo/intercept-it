@@ -125,7 +125,7 @@ We used two simple handlers:
 
 You can execute more difficult logic such as sending exception details to logs stash or notify clients in messengers
 
-Other Interceptors have quite different setup. You can find additional usage examples [here]()
+Other Interceptors have quite different setup. You can find additional usage examples [here](https://github.com/pro100broo/intercept-it/tree/main/examples)
 
 ## Usage tips
 
