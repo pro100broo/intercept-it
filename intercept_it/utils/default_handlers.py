@@ -10,7 +10,6 @@ def cooldown_handler(waiting_time_in_seconds: int) -> None:
 
     :param waiting_time_in_seconds: Time dilation value in seconds
     """
-
     time.sleep(waiting_time_in_seconds)
 
 

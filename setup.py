@@ -15,8 +15,8 @@ setup(
     packages=[
         'intercept_it',
         'intercept_it/utils',
-        'intercept_it/models',
         'intercept_it/loggers',
+        'intercept_it/configs',
         'intercept_it/exceptions'],
     classifiers=[
         "Programming Language :: Python :: 3.7"

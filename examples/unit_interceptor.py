@@ -14,12 +14,12 @@ config.register_handler(
 interceptor = UnitInterceptor(config)
 
 
-@interceptor.handle_exception(ZeroDivisionError)
+@interceptor.handle_exception(target_exception=ZeroDivisionError)
 def dangerous_calculation(some_number: int) -> float:
     return some_number / 0
 
 
-@interceptor.handle_exception(IndexError)
+@interceptor.handle_exception(target_exception=IndexError)
 def dangerous_list_access(index: int) -> int:
     numbers = [1, 2, 3]
     return numbers[index]

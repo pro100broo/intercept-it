@@ -27,7 +27,7 @@ unit_config.register_handler(
 unit_interceptor = UnitInterceptor(unit_config)
 
 
-@unit_interceptor.handle_exception(ZeroDivisionError)
+@unit_interceptor.handle_exception(target_exception=ZeroDivisionError)
 def dangerous_calculation(some_number: int) -> float:
     return some_number / 0
 

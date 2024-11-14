@@ -3,7 +3,7 @@ from intercept_it.interceptors import (
     GroupInterceptor,
     UnitInterceptor
 )
-from intercept_it.models.configs import (
+from intercept_it.configs import (
     GlobalConfig,
     GroupConfig,
     GroupProperties,

@@ -11,14 +11,28 @@ from intercept_it.loggers.base_logger import BaseLogger
 
 
 class STDLogger(BaseLogger):
-    """Implements saving logs to the text file"""
-
+    """ Implements printing logs to the console. Logger uses `loguru <https://pypi.org/project/loguru/>`_ module """
     def __init__(
             self,
             logging_level: str = WarningLevelsEnum.ERROR.value,
             pytz_timezone: str = 'Europe/Moscow',
             default_formatter: Callable = std_formatter
     ):
+        """
+        Supported logging levels:
+
+        * INFO
+        * WARNING
+        * ERROR
+
+        Supported timezones: `list of timezones <https://gist.github.com/heyalexej/8bf688fd67d7199be4a1682b3eec7568>`_
+
+        Message formatter is a callable, which must receives the string and returns the formatted string
+
+        :param logging_level: One of the supported logging levels
+        :param pytz_timezone: Timezone in string representation
+        :param default_formatter: Message text formatter
+        """
         self._logger = logger
         self._logging_level = logging_level
         self._default_timezone = pytz_timezone
@@ -35,9 +49,11 @@ class STDLogger(BaseLogger):
         )
 
     def _patch_timezone(self, record):
+        """ Loguru default timezone patcher  """
         record['extra']['datetime'] = datetime.now(tz=pytz.timezone(self._default_timezone))
 
     def save_logs(self, message: str) -> None:
+        """ Prints logs to console according to logging level """
         message = self._message_formatter(message)
         if self._logging_level == WarningLevelsEnum.INFO.value:
             self._logger.info(message)
@@ -45,4 +61,3 @@ class STDLogger(BaseLogger):
             self._logger.error(message)
         if self._logging_level == WarningLevelsEnum.WARNING.value:
             self._logger.warning(message)
-

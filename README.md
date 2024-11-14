@@ -54,7 +54,7 @@ $ pip install intercept-it
 ## Usage example
 There are three main classes to intercept exceptions:
 
-1. ``GlobalInterceptor`` - subscribes to specified exceptions and execute the same processing logic to all of them
+1. ``GlobalInterceptor`` - subscribes to specified exceptions and execute the same processing logic for all of them
 2. ``GroupInterceptor`` - divides specified exceptions into groups with unique processing logic
 3. ``UnitInterceptor`` - subscribes to specific exception with unique processing logic
 
@@ -233,7 +233,7 @@ unit_config.register_handler(
 unit_interceptor = UnitInterceptor(unit_config)
 
 
-@unit_interceptor.handle_exception(ZeroDivisionError)
+@unit_interceptor.handle_exception(target_exception=ZeroDivisionError)
 def dangerous_calculation(some_number: int) -> float:
     return some_number / 0
 
