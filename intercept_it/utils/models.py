@@ -1,12 +1,12 @@
-from typing import Callable, Tuple, Dict
+from typing import Callable, Any
 from pydantic import BaseModel
 
 
 class DefaultHandler(BaseModel):
     attached_callable: Callable
     execution_order: int
-    args: Tuple
-    kwargs: Dict
+    args: tuple[Any]
+    kwargs: dict[Any]
 
     def execute(self):
         self.attached_callable(*self.args, **self.kwargs)

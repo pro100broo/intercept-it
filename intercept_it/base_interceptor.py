@@ -1,5 +1,3 @@
-from typing import Optional, Union, List
-
 from intercept_it.utils.models import DefaultHandler
 from intercept_it.loggers.base_logger import BaseLogger
 
@@ -8,7 +6,7 @@ from intercept_it.configs import GlobalConfig, GroupConfig, UnitConfig
 
 class BaseInterceptor:
     """ Base interceptor implements shared logic for all concrete interceptors """
-    def __init__(self, config: Union[GlobalConfig, GroupConfig, UnitConfig]):
+    def __init__(self, config: GlobalConfig | GroupConfig | UnitConfig):
         """
         :param config: Interceptor's configuration
         """
@@ -18,8 +16,8 @@ class BaseInterceptor:
     def execute_handlers(
         self,
         exception: Exception,
-        loggers: Optional[List[BaseLogger]],
-        handlers: List[DefaultHandler],
+        loggers: list[BaseLogger] | None,
+        handlers: list[DefaultHandler],
         raise_exception: bool
     ) -> None:
         """
@@ -38,7 +36,7 @@ class BaseInterceptor:
             raise exception
 
     @staticmethod
-    def _process_loggers(loggers: Optional[List[BaseLogger]], message: str) -> None:
+    def _process_loggers(loggers: list[BaseLogger] | None, message: str) -> None:
         """
         Executes specified loggers with received message
 

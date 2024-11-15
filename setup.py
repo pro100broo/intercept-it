@@ -52,6 +52,7 @@ setup(
         "python-dotenv>=1.0.1",
         "pytz>=2024.2",
         "typing_extensions>=4.12.2",
+        "setuptools==75.5.0",
         "win32-setctime>=1.1.0",
         "yarl>=1.17.1"
     ],

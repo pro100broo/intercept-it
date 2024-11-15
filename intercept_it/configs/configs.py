@@ -1,4 +1,4 @@
-from typing import Optional, List, Dict, Union, Callable
+from typing import Callable
 
 from intercept_it.configs.base_config import BaseConfig
 from intercept_it.utils.models import DefaultHandler
@@ -10,9 +10,9 @@ class GlobalConfig(BaseConfig):
     """ Configuration class for ``GlobalInterceptor`` """
     def __init__(
             self,
-            exceptions: List[type[Exception]],
+            exceptions: list[type[Exception]],
             raise_exception: bool = False,
-            loggers: Optional[List[BaseLogger]] = None
+            loggers: list[BaseLogger] | None = None
     ):
         """
         Execute initializing of ``BaseConfig`` class with received parameters
@@ -29,9 +29,9 @@ class GroupProperties(BaseConfig):
     """ Configuration class for ``GroupInterceptor`` """
     def __init__(
             self,
-            exceptions: List[type[Exception]],
+            exceptions: list[type[Exception]],
             raise_exception: bool = False,
-            loggers: Optional[List[BaseLogger]] = None
+            loggers: list[BaseLogger] | None = None
     ):
         """
         Execute initializing of ``BaseConfig`` class with received parameters
@@ -46,7 +46,7 @@ class GroupProperties(BaseConfig):
 
 class GroupConfig:
     """ Configuration class for ``GroupInterceptor``. Implements storing of ``GroupProperties`` """
-    def __init__(self, groups: Dict[Union[int, str], GroupProperties]):
+    def __init__(self, groups: dict[int | str, GroupProperties]):
         """
         Receives groups collection
 
@@ -56,10 +56,10 @@ class GroupConfig:
 
     def register_handler(
             self,
-            group_id: Union[int, str],
+            group_id: int | str,
             attached_callable: Callable,
             *args,
-            execution_order: Union[int, str] = 1,
+            execution_order: int = 1,
             **kwargs
     ) -> None:
         """
@@ -98,7 +98,7 @@ class UnitConfig(BaseConfig):
     def __init__(
             self,
             raise_exception: bool = False,
-            loggers: Optional[List[BaseLogger]] = None
+            loggers: list[BaseLogger] | None = None
     ):
         """
         Execute initializing of ``BaseConfig`` class with received parameters

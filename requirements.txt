@@ -10,7 +10,6 @@ certifi>=2024.8.30
 colorama>=0.4.6
 frozenlist>=1.5.0
 idna>=3.10
-intercept-it>=0.0.1
 loguru>=0.7.2
 magic-filter>=1.0.12
 multidict>=6.1.0
@@ -22,3 +21,4 @@ pytz>=2024.2
 typing_extensions>=4.12.2
 win32-setctime>=1.1.0
 yarl>=1.17.1
+setuptools==75.5.0

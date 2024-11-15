@@ -24,7 +24,8 @@ def resuming_handler(flag: str) -> None:
     :raise ContinueProgramException: If flag param is equal ``RESUME_PROGRAM``
     :raise StopProgramException: If flag param is equal ``STOP_PROGRAM``
     """
-    if flag == ResumeFlagsEnum.CONTINUE_EXECUTION.value:
-        raise ContinueProgramException
-    if flag == ResumeFlagsEnum.STOP_EXECUTION.value:
-        raise StopProgramException
+    match flag:
+        case ResumeFlagsEnum.CONTINUE_EXECUTION.value:
+            raise ContinueProgramException
+        case ResumeFlagsEnum.STOP_EXECUTION.value:
+            raise StopProgramException

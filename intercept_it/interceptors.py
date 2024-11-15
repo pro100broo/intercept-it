@@ -1,5 +1,3 @@
-from typing import Union, Type
-
 from intercept_it.base_interceptor import BaseInterceptor
 from intercept_it.utils.setup_checks import SetupChecker
 from intercept_it.exceptions import InterceptItException
@@ -56,7 +54,7 @@ class GroupInterceptor(BaseInterceptor, SetupChecker):
         self._check_setup(config)
         super().__init__(config)
 
-    def handle_exceptions_group(self, group_id: Union[int, str]):
+    def handle_exceptions_group(self, group_id: int | str):
         """
         Wraps target method or function and waits for exceptions specified in ``Config`` class.
         If unspecified exception occurred, raises it again, else intercept it
@@ -83,7 +81,7 @@ class GroupInterceptor(BaseInterceptor, SetupChecker):
             return wrapper
         return outer
 
-    def _check_group(self, group_id: Union[int, str]) -> None:
+    def _check_group(self, group_id: int | str) -> None:
         if group_id not in self._config.groups:
             raise InterceptItException(f'Intercepted unexpected group: {group_id}')
 
@@ -109,7 +107,7 @@ class UnitInterceptor(BaseInterceptor, SetupChecker):
         self.check_loggers(config.loggers)
         super().__init__(config)
 
-    def handle_exception(self, target_exception: Type[Exception] = Exception):
+    def handle_exception(self, target_exception: type[Exception] = Exception):
         """
         Wraps target method or function and waits for exceptions specified in ``Config`` class.
         If unspecified exception occurred, raises it again, else intercept it

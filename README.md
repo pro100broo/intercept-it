@@ -6,7 +6,6 @@ execute some logic specified for this exception and continue executing the progr
 * Different ways to intercept exceptions
 * Easy setup of interceptors objects
 * Using interceptors with decorators does not affect the readability of the code
-* Supports older versions of Python >= 3.7
 * Generic logging system:
   * Built-in std and telegram loggers
   * Easy way to create and use custom loggers

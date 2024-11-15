@@ -1,4 +1,4 @@
-from typing import Optional, List, Callable, Union
+from typing import Callable
 
 from intercept_it.utils.models import DefaultHandler
 from intercept_it.loggers.base_logger import BaseLogger
@@ -9,7 +9,7 @@ class BaseConfig:
     def __init__(
         self,
         raise_exception: bool = False,
-        loggers: Optional[List[BaseLogger]] = None
+        loggers: list[BaseLogger] | None = None
     ):
         """
         :param raise_exception: If equals ``True``, intercepted exception raises further
@@ -23,7 +23,7 @@ class BaseConfig:
             self,
             attached_callable: Callable,
             *args,
-            execution_order: Union[int, str] = 1,
+            execution_order: int = 1,
             **kwargs
     ) -> None:
         """
